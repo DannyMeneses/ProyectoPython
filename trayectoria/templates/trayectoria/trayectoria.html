@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Trayectoria{% endblock %}
+{% block header %}
+<h1 class="display-2 text-dark mb-4 animated slideInDown">Nuestra trayectoria</h1>
+{% endblock %}
+{% block content %}
+{% for trayectoria in listTrayectoria %}
+<div class="trayectoria-textos">
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="section-title">
+                        <p class="fs-5 fw-medium fst-italic text-primary">{{trayectoria.title}}</p>
+                        <h1 class="display-6">{{trayectoria.author}}</h1>
+                    </div>
+                    <div class="border-top mb-4"></div>
+                    <div class="row g-3">
+                        <div class="col-sm-8">
+                            {% for category in trayectoria.categories.all %}
+                            <em><a href="{% url 'category' category.id %}" class="link">{{category.name}} {% if not forloop.last%},{% endif %}</a>
+                            {% endfor %}
+                            <img class="img-fluid" src="{{trayectoria.image.url}}" alt="">
+                            <h5>{{trayectoria.published|date:"SHORT_DATE_FORMAT"}}</h5>
+                            <p class="mb-0">{{trayectoria.Content}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Store{% endblock %}
+{% block header %}
+<h1 class="display-2 text-dark mb-4 animated slideInDown">Promociones</h1>
+{% endblock %}
+{% block content %}
+<!--{{listPromociones}}> -->
+<!-- Store Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="section-title text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <p class="fs-5 fw-medium fst-italic text-primary">Paquetes</p>
+            <h1 class="display-6">Los paquetes que te podemos ofrecer</h1>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                {% for store in listPromociones %}
+                <div class="store-item position-relative text-center">
+                    <img class="img-fluid" src="{{store.image.url}}" alt="">
+                    <div class="p-4">
+                        <div class="text-center mb-3">
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                        </div>
+                        <h4 class="mb-3">{{store.title}}</h4>
+                        <p>{{store.description}}</p>
+                    </div>
+                    <div class="store-overlay">
+                        <a href="{% url 'contact' %}" class="btn btn-primary rounded-pill py-2 px-4 m-2">Para saber
+                            mas contactanos<i class="fa fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Store End -->
+
+{% endblock %}

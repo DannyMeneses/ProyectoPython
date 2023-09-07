@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Product{% endblock %}
+{% block header %}
+<h1 class="display-2 text-dark mb-4 animated slideInDown">Products</h1>
+{% endblock %}
+{% block content %}
+<!-- Products Start -->
+<!--{{listProducts}}> -->
+<div class="section-title text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+    <p class="fs-5 fw-medium fst-italic text-primary">¿Que tenemos a tu disposición?</p>
+    <h1 class="display-6">A continuación te presentamos todos los productos que ofertamos</h1>
+</div>
+{% for product in listProducts %}
+<div class="container-fluid product py-5">
+    <div class="container py-5">
+        <div class="owl-carousel product-carousel wow fadeInUp" data-wow-delay="0.5s">
+            <a href="" class="d-block product-item rounded">
+                <img src="{{product.image.url}}" alt="">
+                <div class="bg-white shadow-sm text-center p-4 position-relative mt-n5 mx-4">
+                    <h4 class="text-primary">{{product.title}}</h4>
+                    <span class="text-body">"{{product.description}}"</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<!-- Products End -->
+{% endblock %}
